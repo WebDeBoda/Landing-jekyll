@@ -1,0 +1,211 @@
+---
+layout: custom
+
+---
+{% assign sorted_posts = site.posts | sort: 'date' | reverse %}
+<!-- Hero -->
+<div class="overflow-hidden mt-5">
+    <main id="content" role="main">
+
+    
+    <!-- Card List -->
+    <div class="overflow-hidden">
+      <div class="container content-space-t-3 content-space-b-1 content-space-b-lg-3">
+        <div class="row justify-content-md-between align-items-md-center">
+          <div class="col-md-5 mb-5 mb-md-0">
+            <div class="mb-3">
+              <span class="badge bg-soft-dark text-dark">{{ sorted_posts.first.category }}</span>
+            </div>
+            <div class="mb-5">
+              <h2 class="h1"><a class="text-dark" href="#">{{ sorted_posts.first.title }}</a></h2>
+            </div>
+
+            <!-- Media -->
+            <div class="d-flex align-items-center mb-3">
+              <div class="flex-shrink-0">
+                <img class="avatar avatar-lg avatar-circle" src="{{ sorted_posts.first.image }}" alt="{{ sorted_posts.first.title }}">
+              </div>
+
+              <div class="flex-grow-1 ms-3">
+                <h5 class="mb-1"><a class="text-dark" href="./blog-author-profile.html">Louise Donadieu</a></h5>
+                <span class="d-block small text-muted">Strategic Marketing Consultant</span>
+              </div>
+            </div>
+            <!-- End Media -->
+
+            <a class="link link-pointer" href="{{ sorted_posts.first.url | relative_url  }}">Read more</a>
+          </div>
+          <!-- End Col -->
+
+          <div class="col-md-7 col-lg-6">
+            <div class="position-relative">
+              <img class="img-fluid rounded-3" src="{{ sorted_posts.first.image }}" alt="Image Description">
+
+              <!-- SVG Shape -->
+              <figure class="position-absolute top-0 end-0 d-none d-lg-block mt-3 me-n7" style="width: 4rem;">
+                <img class="img-fluid" src="/assets/svg/components/pointer-up.svg" alt="Image Description">
+              </figure>
+              <!-- End SVG Shape -->
+
+              <!-- SVG Shape -->
+              <figure class="position-absolute bottom-0 start-0 mb-n8 ms-n8" style="width: 12rem;">
+                <img class="img-fluid" src="/assets/svg/components/curved-shape.svg" alt="Image Description">
+              </figure>
+              <!-- End SVG Shape -->
+            </div>
+          </div>
+          <!-- End Col -->
+        </div>
+        <!-- End Row -->
+      </div>
+    </div>
+    <!-- End Card List -->
+    
+    <!-- Card Grid -->
+    <div class="overflow-hidden">
+      <div class="container content-space-1 content-space-b-lg-3">
+        <!-- Heading -->
+        <div class="w-lg-65 text-center mx-lg-auto mb-5 mb-sm-7 mb-lg-10">
+          <h1>Más artículos</h1>
+          <p>¡Encuentra los artículos más interesantes sobre bodas en nuestra web!</p>
+        </div>
+        <!-- End Heading -->
+
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 gx-7">
+
+            {% for post in sorted_posts offset:1 limit: 2 %}
+                <div class="col mb-7 mb-md-10">
+                    <!-- Card -->
+                    <a class="card card-ghost card-transition-zoom h-100" href="{{ sorted_posts.first.url | relative_url  }}">
+                    <div class="card-pinned card-transition-zoom-item">
+                        <img class="card-img" src="{{ post.image }}" alt="{{ post.title }}">
+                        <span class="badge bg-dark text-white card-pinned-top-end">{{ post.category }}</span>
+                    </div>
+
+                    <div class="card-body">
+                        <h4>{{ post.title }}</h4>
+                        <p class="card-text">{{ post.summary }}</p>
+                    </div>
+
+                    <div class="card-footer">
+                        <span class="card-link">Leer Más</span>
+                    </div>
+                    </a>
+                    <!-- End Card -->
+                </div>
+                <!-- End Col -->
+            {% endfor %}
+
+          <div class="col mb-7 mb-md-10">
+            <!-- Card -->
+            <a class="card card-borderless card-transition h-100 bg-img-end" href="{{ sorted_posts.first.url | relative_url  }} style="background-image: url(/assets/svg/components/card-12.svg); min-height: 15rem;">
+              <div class="card-body">
+                <div class="d-flex justify-content-between flex-column h-100">
+                  <div class="mb-1">
+                    <span class="card-title fs-3 text-white"><span class="fw-bold">Unify</span> Press publishes books about economic and technological advancement.</span>
+                  </div>
+                  <div class="mt-1">
+                    <span class="card-link link-light">Visit the site</span>
+                  </div>
+                </div>
+              </div>
+            </a>
+            <!-- End Card -->
+          </div>
+          <!-- End Col -->
+          {% for post in sorted_posts offset:3 limit: 6 %}
+                <div class="col mb-7 mb-md-10">
+                    <!-- Card -->
+                    <a class="card card-ghost card-transition-zoom h-100" href="./blog-article.html">
+                    <div class="card-pinned card-transition-zoom-item">
+                        <img class="card-img" src="{{ post.image }}" alt="{{ post.title }}">
+                        <span class="badge bg-dark text-white card-pinned-top-end">{{ post.category }}</span>
+                    </div>
+
+                    <div class="card-body">
+                        <h4>{{ post.title }}</h4>
+                        <p class="card-text">{{ post.summary }}</p>
+                    </div>
+
+                    <div class="card-footer">
+                        <span class="card-link">Leer Más</span>
+                    </div>
+                    </a>
+                    <!-- End Card -->
+                </div>
+                <!-- End Col -->
+            {% endfor %}
+        </div>
+        <!-- End Row -->
+
+        <!-- Pagination -->
+        <nav class="d-flex justify-content-center" aria-label="Page navigation">
+          <ul class="pagination justify-content-center justify-content-sm-start mb-0">
+            <li class="page-item disabled">
+              <a class="page-link" href="#" tabindex="-1">
+                <span aria-hidden="true">«</span>
+              </a>
+            </li>
+            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item">
+              <a class="page-link" href="#">
+                <span aria-hidden="true">»</span>
+              </a>
+            </li>
+          </ul>
+          <!-- End Col -->
+        </nav>
+        <!-- End Pagination -->
+      </div>
+    </div>
+    <!-- End Card Grid -->
+
+    <!-- Subscribe -->
+    <div class="overflow-hidden">
+      <div class="container content-space-b-2 content-space-b-lg-3">
+        <div class="position-relative bg-soft-primary rounded-3 p-7">
+          <div class="row justify-content-lg-between align-items-lg-center">
+            <div class="col-lg-6 mb-3 mb-lg-0">
+              <h2>Get industry insights that you won't delete, straight in your inbox</h2>
+            </div>
+            <!-- End Col -->
+
+            <div class="col-lg-5">
+              <form>
+                <!-- Input Card -->
+                <div class="input-card input-card-sm mb-3">
+                  <div class="input-card-form">
+                    <label for="subscribeForm" class="form-label visually-hidden">Enter email</label>
+                    <input type="email" class="form-control form-control-lg" id="subscribeForm" placeholder="Enter email" aria-label="Enter email">
+                  </div>
+                  <button type="button" class="btn btn-primary btn-lg" id="heroNameAddOn">Subscribe</button>
+                </div>
+                <!-- End Input Card -->
+              </form>
+
+              <a class="link link-pointer" href="./page-login.html">Create a free account</a>
+            </div>
+            <!-- End Col -->
+          </div>
+          <!-- End Row -->
+
+          <!-- SVG Shape -->
+          <figure class="position-absolute top-0 end-0 zi-n1 d-none d-md-block mt-10 me-n10" style="width: 4rem;">
+            <img class="img-fluid" src="/assets/svg/components/pointer-up.svg" alt="Image Description">
+          </figure>
+          <!-- End SVG Shape -->
+
+          <!-- SVG Shape -->
+          <figure class="position-absolute bottom-0 start-0 zi-n1 ms-n10 mb-n10" style="width: 15rem;">
+            <img class="img-fluid" src="/assets/svg/components/curved-shape.svg" alt="Image Description">
+          </figure>
+          <!-- End SVG Shape -->
+        </div>
+      </div>
+    </div>
+    <!-- End Subscribe -->
+  </main>
+</div>
+<!-- End Hero -->
