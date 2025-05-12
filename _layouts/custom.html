@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-D4Y7RMZ464"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-D4Y7RMZ464');
+  </script>
+
+  <!-- Required Meta Tags Always Come First -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Meta Title -->
+  <title>Diseña la web de tu boda | Personalización rápida y fácil</title>
+
+  <!-- Meta Description -->
+  <meta name="description" content="Crea la web perfecta para tu boda en minutos. Personaliza cada detalle y gestiona tus invitados fácilmente. ¡Empieza ahora!">
+
+  <!-- Meta Keywords -->
+  <meta name="keywords" content="web de boda, planificación de bodas, personalización de bodas, gestión de invitados, diseño de web de boda">
+
+  <!-- Meta Robots -->
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph Tags -->
+  <meta property="og:title" content="Diseña la web de tu boda | Personalización rápida y fácil">
+  <meta property="og:description" content="Crea la web perfecta para tu boda en minutos. Personaliza cada detalle y gestiona tus invitados fácilmente. ¡Empieza ahora!">
+  <meta property="og:url" content="https://www.webdeboda.es">
+  <meta property="og:image" content="https://webdeboda.es/galeria/Logo.png">
+
+  <!-- Twitter Card Tags -->
+  <meta name="twitter:title" content="Diseña la web de tu boda | Personalización rápida y fácil">
+  <meta name="twitter:description" content="Crea la web perfecta para tu boda en minutos. Personaliza cada detalle y gestiona tus invitados fácilmente. ¡Empieza ahora!">
+  <meta name="twitter:url" content="https://www.webdeboda.es">
+  <meta name="twitter:image" content="https://webdeboda.es/galeria/Logo.png">
+
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="{{ '/favicon.png' | relative_url }}">
+
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- CSS Implementing Plugins -->
+  <link rel="stylesheet" href="{{ '/assets/vendor/bootstrap-icons/font/bootstrap-icons.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/vendor/hs-mega-menu/dist/hs-mega-menu.min.css' | relative_url }}">
+
+  <!-- CSS Unify Template -->
+  <link rel="stylesheet" href="{{ '/assets/css/theme.css' | relative_url }}">
+</head>
+
+<body>
+    <header id="header" class="navbar navbar-expand-lg navbar-end navbar-light navbar-absolute-top navbar-show-hide bg-white border-bottom border-primary">
+        {% include header.html %}
+    </header>
+
+    <main id="content" role="main">
+        {{ content }}
+    </main>
+
+    <footer class="bg-dark">
+        {% include footer.html %}
+    </footer>
+<!-- ========== END FOOTER ========== -->
+
+  <!-- ========== SECONDARY CONTENTS ========== -->
+
+  <!-- JS Global Compulsory  -->
+  <script src="{{ '/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js' | relative_url }}"></script>
+
+  <!-- JS Implementing Plugins -->
+  <script src="{{ '/assets/vendor/hs-header/dist/hs-header.min.js' | relative_url }}"></script>
+  <script src="{{ '/assets/vendor/hs-mega-menu/dist/hs-mega-menu.min.js' | relative_url }}"></script>
+  <script src="{{ '/assets/vendor/hs-go-to/dist/hs-go-to.min.js' | relative_url }}"></script>
+
+  <!-- JS Unify -->
+  <script src="{{ '/assets/js/theme.min.js' | relative_url }}"></script>
+
+  <!-- JS Plugins Init. -->
+  <script>
+    (function() {
+      // INITIALIZATION OF NAVBAR
+      // =======================================================
+      new HSHeader('#header').init()
+
+
+      // INITIALIZATION OF MEGA MENU
+      // =======================================================
+      const megaMenu = new HSMegaMenu('.js-mega-menu', {
+        desktop: {
+          position: 'left'
+        }
+      })
+
+      // INITIALIZATION OF GO TO
+      // =======================================================
+      new HSGoTo('.js-go-to')
+    })()
+  </script>
+
+   <!-- Go To -->
+  <a class="js-go-to go-to position-fixed" href="javascript:;" style="visibility: hidden;"
+     data-hs-go-to-options='{
+       "offsetTop": 700,
+       "position": {
+         "init": {
+           "right": "2rem"
+         },
+         "show": {
+           "bottom": "2rem"
+         },
+         "hide": {
+           "bottom": "-2rem"
+         }
+       }
+     }'>
+    <i class="bi-chevron-up"></i>
+  </a>
+  <!-- ========== END SECONDARY CONTENTS ========== -->
+</body>
+</html>
