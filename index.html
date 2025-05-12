@@ -109,7 +109,7 @@ how_it_works:
                                     <label class="form-check form-check-reverse form-check-select form-check-pinned-top-end">
                                         <input type="radio" class="form-check-input" name="formCheckSelect" {% if plan.checked %}checked{% endif %} aria-label="Radio checkbox" {% if plan.tag.text %}data-bs-toggle="tooltip" data-bs-placement="top" title="{{ plan.tag.text }}"{% endif %} id="plan{{ forloop.index }}">
                                         <span class="form-check-label">
-                                            <span class="fw-medium">{{ plan.title }}<span class="badge bg-soft-primary text-{{ plan.tag.style }} rounded-pill">{{ plan.tag.text }}</span></span>
+                                            <span class="fw-medium">{{ plan.title }} <span class="badge bg-soft-primary text-{{ plan.tag.style }} rounded-pill">{{ plan.tag.text }}</span></span>
                                             <span class="d-block h4 mb-0">{{ plan.price }}</span>
                                             <span class="d-block fs-6 text-muted">{{ plan.description }}</span>
                                         </span>
