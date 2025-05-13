@@ -34,6 +34,19 @@ theme: minima
 plugins:
   - jekyll-feed
   - jekyll-admin
+  - jekyll-paginate-v2
+
+pagination:
+  enabled: true
+  per_page: 12
+  title: ":title - Página :num"
+  permalink: '/:num/'
+  limit: 3
+  sort_field: "date"
+  sort_reverse: true
+  trail:
+    before: 2
+    after: 2
 
 # Exclude from processing.
 # The following items will not be processed, by default.

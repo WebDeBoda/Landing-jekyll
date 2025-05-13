@@ -1,8 +1,10 @@
 ---
 layout: custom
-
+pagination: 
+  enabled: true
+permalink: /blog/
 ---
-{% assign sorted_posts = site.posts | sort: 'date' | reverse %}
+{% assign sorted_posts = paginator.posts | sort: 'date' | reverse %}
 <!-- Hero -->
 <div class="overflow-hidden mt-5">
     <main id="content" role="main">
@@ -17,7 +19,7 @@ layout: custom
               <span class="badge bg-soft-dark text-dark">{{ sorted_posts.first.category }}</span>
             </div>
             <div class="mb-5">
-              <h2 class="h1"><a class="text-dark" href="#">{{ sorted_posts.first.title }}</a></h2>
+              <h2 class="h1"><a class="text-dark" href="{{ sorted_posts.first.url | relative_url  }}">{{ sorted_posts.first.title }}</a></h2>
             </div>
 
             <!-- Media -->
@@ -33,13 +35,13 @@ layout: custom
             </div>
             <!-- End Media -->
 
-            <a class="link link-pointer" href="{{ sorted_posts.first.url | relative_url  }}">Read more</a>
+            <a class="link link-pointer" href="{{ sorted_posts.first.url | relative_url  }}">Leer más</a>
           </div>
           <!-- End Col -->
 
           <div class="col-md-7 col-lg-6">
             <div class="position-relative">
-              <img class="img-fluid rounded-3" src="{{ sorted_posts.first.image }}" alt="Image Description">
+              <img class="img-fluid rounded-3 blog-image" src="{{ sorted_posts.first.image }}" alt="{{ sorted_posts.first.title }}">
 
               <!-- SVG Shape -->
               <figure class="position-absolute top-0 end-0 d-none d-lg-block mt-3 me-n7" style="width: 4rem;">
@@ -78,7 +80,7 @@ layout: custom
                     <!-- Card -->
                     <a class="card card-ghost card-transition-zoom h-100" href="{{ sorted_posts.first.url | relative_url  }}">
                     <div class="card-pinned card-transition-zoom-item">
-                        <img class="card-img" src="{{ post.image }}" alt="{{ post.title }}">
+                        <img class="card-img blog-image" src="{{ post.image }}" alt="{{ post.title }}">
                         <span class="badge bg-dark text-white card-pinned-top-end">{{ post.category }}</span>
                     </div>
 
@@ -98,7 +100,7 @@ layout: custom
 
           <div class="col mb-7 mb-md-10">
             <!-- Card -->
-            <a class="card card-borderless card-transition h-100 bg-img-end" href="{{ sorted_posts.first.url | relative_url  }} style="background-image: url(/assets/svg/components/card-12.svg); min-height: 15rem;">
+            <a class="card card-borderless card-transition h-100 bg-img-end" href="" style="background-image: url(/assets/svg/components/card-12.svg); min-height: 15rem;">
               <div class="card-body">
                 <div class="d-flex justify-content-between flex-column h-100">
                   <div class="mb-1">
@@ -113,12 +115,12 @@ layout: custom
             <!-- End Card -->
           </div>
           <!-- End Col -->
-          {% for post in sorted_posts offset:3 limit: 6 %}
+          {% for post in sorted_posts offset:3 limit: 9 %}
                 <div class="col mb-7 mb-md-10">
                     <!-- Card -->
                     <a class="card card-ghost card-transition-zoom h-100" href="./blog-article.html">
                     <div class="card-pinned card-transition-zoom-item">
-                        <img class="card-img" src="{{ post.image }}" alt="{{ post.title }}">
+                        <img class="card-img blog-image" src="{{ post.image }}" alt="{{ post.title }}">
                         <span class="badge bg-dark text-white card-pinned-top-end">{{ post.category }}</span>
                     </div>
 
@@ -139,24 +141,28 @@ layout: custom
         <!-- End Row -->
 
         <!-- Pagination -->
-        <nav class="d-flex justify-content-center" aria-label="Page navigation">
-          <ul class="pagination justify-content-center justify-content-sm-start mb-0">
-            <li class="page-item disabled">
-              <a class="page-link" href="#" tabindex="-1">
-                <span aria-hidden="true">«</span>
-              </a>
-            </li>
-            <li class="page-item active"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item">
-              <a class="page-link" href="#">
-                <span aria-hidden="true">»</span>
-              </a>
-            </li>
-          </ul>
-          <!-- End Col -->
-        </nav>
+        {% if paginator.total_pages > 1 %}
+            <nav class="d-flex justify-content-center" aria-label="Page navigation">
+            <ul class="pagination justify-content-center justify-content-sm-start mb-0">
+                <li class="page-item {% if paginator.previous_page == false %}disabled{% endif %}">
+                <a class="page-link" {% if paginator.previous_page %}href="{{ paginator.previous_page_path | prepend: site.baseurl }}"{% endif %}>
+                    <span aria-hidden="true">«</span>
+                </a>
+                </li>
+                {% for trail in paginator.page_trail %}
+                    <li class="page-item {% if page.url == trail.path %}active{% endif %}">
+                        <a class="page-link" href="{{ trail.path | prepend: site.baseurl }}" title="{{trail.title}}">{{ trail.num }}</a>
+                    </li>
+                {% endfor %}
+                <li class="page-item {% if paginator.next_page == false %}disabled{% endif %}">
+                <a class="page-link" {% if paginator.next_page %}href="{{ paginator.next_page_path | prepend: site.baseurl }}"{% endif %}>
+                    <span aria-hidden="true">»</span>
+                </a>
+                </li>
+            </ul>
+            <!-- End Col -->
+            </nav>
+        {% endif %}
         <!-- End Pagination -->
       </div>
     </div>
