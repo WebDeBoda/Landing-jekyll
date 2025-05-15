@@ -1,0 +1,21 @@
+<!-- Col -->
+<div class="col mb-7 mb-md-10">
+    <!-- Card -->
+    <a class="card card-ghost card-transition-zoom h-100" href="{{ post.url | relative_url  }}">
+    <div class="card-pinned card-transition-zoom-item">
+        <img class="card-img blog-image" src="{{ post.image }}" alt="{{ post.title }}">
+        <span class="badge bg-dark text-white card-pinned-top-end">{{ post.category }}</span>
+    </div>
+
+    <div class="card-body">
+        <h4>{{ post.title }}</h4>
+        <p class="card-text">{{ post.summary }}</p>
+    </div>
+
+    <div class="card-footer">
+        <span class="card-link">Leer Más</span>
+    </div>
+    </a>
+    <!-- End Card -->
+</div>
+<!-- End Col -->

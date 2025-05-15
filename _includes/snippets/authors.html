@@ -1,0 +1,19 @@
+<!-- Media -->
+{% if post.author %}
+    {% assign author = site.data.authors | where: "id", post.author | first %}
+{% else %}
+    {% assign author = site.data.authors | where: "id", "default" | first %}
+{% endif %}
+<div class="d-flex align-items-center mb-3">
+    <div class="flex-shrink-0">
+    <img class="avatar avatar-lg avatar-circle" src="{{ author.image | relative_url }}" alt="{{ author.name }}">
+    </div>
+
+    <div class="flex-grow-1 ms-3">
+        <span class="d-block fs-5 text-muted">{{ post.date | date: "%Y/%m/%d" }}</span>
+        <h5 class="mb-1"><a class="text-dark" href="./blog-author-profile.html">{{ author.name }}</a></h5>
+        <span class="d-block small text-muted">{{ author.description }}</span>
+    </div>
+    
+</div>
+<!-- End Media -->

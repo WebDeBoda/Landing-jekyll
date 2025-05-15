@@ -1,6 +1,7 @@
 ---
+layout: custom_post
 title: "4. 31 Consejos para disfrutar al máximo el día de tu boda"
-date: 2025-04-13
+date: 2025-04-10
 category: Consejos para el día de la boda
 image: https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e
 summary: El día de tu boda es uno de los más importantes de tu vida. Para asegurarte de que todo salga perfecto y puedas disfrutarlo al máximo, aquí tienes 31 consejos esenciales

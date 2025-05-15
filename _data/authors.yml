@@ -1,0 +1,12 @@
+- id: default
+  name: Web de boda
+  image: /galeria/authors/webdeboda.png
+  description: "Creamos la mejor web para tu boda."
+- id: pablo
+  name: Pablo Iglesia
+  image: /galeria/authors/pablo.jpeg
+  description: "Pablo is a software engineer with a passion for web development and open source."
+- id: bea
+  name: Bea Torreiro
+  image: /galeria/authors/bea.jpeg
+  description: "Bea is a software engineer with a passion for web development and open source."

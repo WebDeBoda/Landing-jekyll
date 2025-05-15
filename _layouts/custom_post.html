@@ -1,3 +1,6 @@
+---
+recent_articles: 'Artículos Más Recientes'
+---
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -53,50 +56,36 @@
   <!-- CSS Unify Template -->
   <link rel="stylesheet" href="{{ '/assets/css/theme.css' | relative_url }}">
   <link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/post.css' | relative_url }}">
 </head>
 
 <body>
+  
+  {% assign post = page %}
+  {% assign sorted_posts = site.posts | sort: 'date' | reverse %}
     <header id="header" class="navbar navbar-expand-lg navbar-end navbar-light navbar-absolute-top navbar-show-hide bg-white border-bottom border-primary">
         {% include header.html %}
     </header>
 
     <main id="content" role="main">
+      <div class="d-flex bg-img-center" style="background-image: url({{ post.image }});">
+        <div class="container d-flex justify-content-end flex-column min-vh-lg-75 content-space-1 content-space-lg-b-3">
+          <div class="w-lg-65">
+            <h1 class="display-4 text-white">{{ post. title }}</h1>
+            <p class="lead text-white">{{ post.summary }}</p>
+          </div>
+        </div>
+      </div>
       <!-- Hero -->
       <div class="bg-gradient-to-bottom-sm-light">
-        <div class="container content-space-t-3">
+        <div class="container content-space-t-1">
           <div class="row justify-content-lg-center">
             <div class="col-lg-8">
-              <!-- Media -->
-              <div class="d-flex align-items-center mb-4">
-                {% if page.author %}
-                <div class="flex-shrink-0">
-                  <img class="avatar avatar-circle" src="{{ page.author.image }}" alt="{{ page.author.name }}">
-                </div>
-                {% endif %}
-
-                <div class="flex-grow-1 ms-3">
-                  {% if page.author %}
-                  <h6 class="mb-0">
-                    {{ page.author.name }}
-                  </h6>
-                  {% endif %}
-                  <span class="d-block fs-5 text-muted">{{ page.date | date: "%Y/%m/%d" }}</span>
-                </div>
-              </div>
-              <!-- End Media -->
-
               <div class="mb-6">
-                <h1 class="h2">{{ page.title }}</h1>
-                <p class="lead">{{ page.summary }}</p>
+                <span class="d-block text-white mb-3"><a class="badge bg-dark text-white rounded-pill ms-1" href="">{{ post.category }}</a></span>
+                {% include snippets/authors.html %}
+                {{ content }}
               </div>
-            </div>
-            <!-- End Col -->
-          </div>
-          <!-- End Row -->
-
-          <div class="row justify-content-lg-center">
-            <div class="col-lg-10">
-              <img class="img-fluid rounded-3 blog-image" src="{{ page.image }}" alt="{{ page.title }}">
             </div>
             <!-- End Col -->
           </div>
@@ -105,300 +94,95 @@
       </div>
       <!-- End Hero -->
 
-      <!-- Description -->
-      <div class="container content-space-2 content-space-lg-3">
-        {{ content }}
+      <!-- End Social media -->
+      <div class="row mb-3">
+        <div class="col-10 col-md-8 col-lg-6 offset-1 offset-md-2 offset-lg-3">
+          <div class="row">
+        <div class="col-lg-6 mb-5 mb-lg-0">
+          <div class="d-flex align-items-center">
+            <h6 class="me-3 mb-0">Compartir:</h6>
+
+            <!-- List -->
+            <ul class="list-inline mb-0">
+          <li class="list-inline-item">
+            <a class="btn btn-ghost-secondary btn-icon btn-sm rounded-circle" href="https://www.facebook.com/sharer/sharer.php?u={{ page.url | absolute_url }}" target="_blank" rel="noopener" title="Compartir en Facebook">
+              <i class="bi-facebook"></i>
+            </a>
+          </li>
+          <li class="list-inline-item">
+            <a class="btn btn-ghost-secondary btn-icon btn-sm rounded-circle" href="https://twitter.com/intent/tweet?url={{ page.url | absolute_url }}&text={{ page.title | uri_escape }}" target="_blank" rel="noopener" title="Compartir en Twitter">
+              <i class="bi-twitter"></i>
+            </a>
+          </li>
+          <li class="list-inline-item">
+            <a class="btn btn-ghost-secondary btn-icon btn-sm rounded-circle" href="https://www.linkedin.com/shareArticle?mini=true&url={{ page.url | absolute_url }}&title={{ page.title | uri_escape }}" target="_blank" rel="noopener" title="Compartir en LinkedIn">
+              <i class="bi-linkedin"></i>
+            </a>
+          </li>
+          <li class="list-inline-item">
+            <a class="btn btn-ghost-secondary btn-icon btn-sm rounded-circle" href="https://www.instagram.com/" target="_blank" rel="noopener" title="Instagram">
+              <i class="bi-instagram"></i>
+            </a>
+          </li>
+          <li class="list-inline-item">
+            <a class="btn btn-ghost-secondary btn-icon btn-sm rounded-circle" href="https://api.whatsapp.com/send?text={{ page.title | uri_escape }}%20{{ page.url | absolute_url }}" target="_blank" rel="noopener" title="Compartir en WhatsApp">
+              <i class="bi-whatsapp"></i>
+            </a>
+          </li>
+            </ul>
+            <!-- End List -->
+          </div>
+        </div>
+        <!-- End Social media -->
+          </div>
+          <!-- End Row -->
+        </div>
+        <!-- End Col -->
       </div>
-      <!-- End Description -->
+      <!-- End Social media -->
 
       <!-- Card Grid -->
-      <div class="container content-space-b-2 content-space-b-lg-3">
+      <div class="container content-space-b-2 content-space-b-lg-3  content-space-t-3">
         <!-- Heading -->
         <div class="w-lg-65 text-center mx-lg-auto mb-7">
-          <h3>Related articles</h3>
+          <h3>{{ page.recent_articles | default: layout.recent_articles }}</h3>
         </div>
         <!-- End Heading -->
 
         <div class="row">
-          <div class="col-sm-6 col-md-4 mb-5 mb-md-0">
-            <!-- Card -->
-            <a class="card card-ghost card-transition-zoom h-100" href="./blog-article.html">
-              <div class="card-transition-zoom-item">
-                <img class="card-img" src="/assets/img/580x480/img1.jpg" alt="Image Description">
-              </div>
-
-              <div class="card-body">
-                <h4>Virtual Venue</h4>
-                <p class="card-text">Create an immersive attendee experience with interactive programming for both digital and onsite audiences</p>
-              </div>
-
-              <div class="card-footer">
-                <span class="card-link">Explore Virtual Venue</span>
-              </div>
-            </a>
-            <!-- End Card -->
-          </div>
-          <!-- End Col -->
-
-          <div class="col-sm-6 col-md-4 mb-5 mb-md-0">
-            <!-- Card -->
-            <a class="card card-ghost card-transition-zoom h-100" href="./blog-article.html">
-              <div class="card-pinned card-transition-zoom-item">
-                <img class="card-img" src="/assets/img/580x480/img2.jpg" alt="Image Description">
-                <span class="badge bg-dark text-white card-pinned-top-end">Sponsored</span>
-              </div>
-
-              <div class="card-body">
-                <h4>Studio by Htmlstream</h4>
-                <p class="card-text">Produce professional, reliable streams easily leveraging Htmlstream's innovative broadcast studio</p>
-              </div>
-
-              <div class="card-footer">
-                <span class="card-link">Explore Studio</span>
-              </div>
-            </a>
-            <!-- End Card -->
-          </div>
-          <!-- End Col -->
-
-          <div class="col-sm-6 col-md-4">
-            <!-- Card -->
-            <a class="card card-ghost card-transition-zoom h-100" href="./blog-article.html">
-              <div class="card-transition-zoom-item">
-                <img class="card-img" src="/assets/img/580x480/img3.jpg" alt="Image Description">
-              </div>
-
-              <div class="card-body">
-                <h4>Onsite</h4>
-                <p class="card-text">Optimize your in-person experience with best-in-class capabilities like badge printing and lead retrieval</p>
-              </div>
-
-              <div class="card-footer">
-                <span class="card-link">Explore Onsite</span>
-              </div>
-            </a>
-            <!-- End Card -->
-          </div>
-          <!-- End Col -->
+          {% for post in sorted_posts limit: 3 %}
+            {% include snippets/post-card.html %}
+          {% endfor %}
         </div>
         <!-- End Row -->
       </div>
       <!-- End Card Grid -->
 
-      <!-- About Author -->
+      <!-- Quienes Somos -->
       <div class="bg-light">
         <div class="container content-space-1">
           <div class="row justify-content-lg-center">
             <div class="col-lg-8">
-              <div class="mb-5">
-                <h5>About the author</h5>
-              </div>
-
-              <!-- Media -->
-              <div class="d-sm-flex">
+              <div class="d-sm-flex align-items-center">
                 <div class="flex-shrink-0 mb-3 mb-sm-0">
-                  <img class="avatar avatar-xl avatar-circle" src="/assets/img/160x160/img10.jpg" alt="Image Description">
+                  <img class="avatar avatar-xl avatar-circle" src="/galeria/favicon.png" alt="Webdeboda.es logo">
                 </div>
-
                 <div class="flex-grow-1 ms-sm-4">
-                  <!-- Media -->
-                  <div class="d-flex justify-content-between align-items-center mb-2">
-                    <h4 class="mb-0">
-                      <a class="text-dark" href="./blog-author-profile.html">Louise Donadieu</a>
-                    </h4>
-                    <button type="button" class="btn btn-outline-primary btn-sm">
-                      <i class="bi-person-plus-fill me-1"></i> Follow
-                    </button>
-                  </div>
-                  <!-- End Media -->
-
-                  <p>Christina started his recruitment career on the agency side. Since then, she’s built a career helping customers get the most out of HR technology. She’s currently a Customer Success Specialist at Unify and spends her time speaking to in-house recruiters all over the world - helping them solve their recruitment challenges, and get the most out of our talent acquisition software.</p>
+                  <p>En <strong>Webdeboda.es</strong> te ayudamos a crear la web perfecta para tu boda de forma rápida, sencilla y personalizada. Nuestro objetivo es que puedas gestionar todos los detalles de tu gran día en un solo lugar, con una web elegante y funcional que refleje vuestro estilo.</p>
+                  <ul>
+                    <li>Personalización completa de la web</li>
+                    <li>Gestión de invitados y confirmaciones</li>
+                    <li>Secciones adaptadas a vuestras necesidades</li>
+                    <li>Soporte cercano y atención personalizada</li>
+                  </ul>
+                  <p>¿Quieres saber cómo podemos ayudarte? <a href="/contacto/">Contáctanos</a> o descubre <a href="https://demo.webdeboda.es">cómo puede lucir tu web</a>.</p>
                 </div>
               </div>
-              <!-- End Media -->
             </div>
           </div>
         </div>
       </div>
-      <!-- End About Author -->
-
-      <!-- Comment -->
-      <div class="container content-space-2 content-space-lg-3">
-        <!-- Heading -->
-        <div class="w-lg-65 text-center mx-lg-auto mb-7">
-          <h3>3 comments</h3>
-        </div>
-        <!-- End Heading -->
-
-        <div class="row justify-content-lg-center">
-          <div class="col-lg-8">
-            <!-- Comment -->
-            <ul class="list-comment">
-              <!-- Item -->
-              <li class="list-comment-item">
-                <!-- Media -->
-                <div class="d-flex align-items-center mb-3">
-                  <div class="flex-shrink-0">
-                    <img class="avatar avatar-circle" src="/assets/img/160x160/img3.jpg" alt="Image Description">
-                  </div>
-
-                  <div class="flex-grow-1 ms-3">
-                    <div class="d-flex justify-content-between align-items-center">
-                      <h6>Dave Austin</h6>
-                      <span class="d-block small text-muted">1 day ago</span>
-                    </div>
-                  </div>
-                </div>
-                <!-- End Media -->
-
-                <p>As a Special Education teacher this resonates so well with me. Fighting with gen ed teachers to flatten for the students with learning disabilities. It also confirms some things for me in my writing.</p>
-
-                <a class="link" href="#">Reply</a>
-
-                <!-- Comment -->
-                <ul class="list-comment">
-                  <!-- Item -->
-                  <li class="list-comment-item">
-                    <!-- Media -->
-                    <div class="d-flex align-items-center mb-3">
-                      <div class="flex-shrink-0">
-                        <img class="avatar avatar-circle" src="/assets/img/160x160/img10.jpg" alt="Image Description">
-                      </div>
-
-                      <div class="flex-grow-1 ms-3">
-                        <div class="d-flex justify-content-between align-items-center">
-                          <h6>Louise Donadieu</h6>
-                          <span class="d-block small text-muted">1 day ago</span>
-                        </div>
-                      </div>
-                    </div>
-                    <!-- End Media -->
-
-                    <p>Love it Dave! We're all about keeping it up.</p>
-
-                    <a class="link" href="#">Reply</a>
-                  </li>
-                  <!-- End Item -->
-                </ul>
-                <!-- End Comment -->
-              </li>
-              <!-- End Item -->
-
-              <!-- Item -->
-              <li class="list-comment-item">
-                <!-- Media -->
-                <div class="d-flex align-items-center mb-3">
-                  <div class="flex-shrink-0">
-                    <img class="avatar avatar-circle" src="/assets/img/160x160/img8.jpg" alt="Image Description">
-                  </div>
-
-                  <div class="flex-grow-1 ms-3">
-                    <div class="d-flex justify-content-between align-items-center">
-                      <h6>Hanna Wolfe</h6>
-                      <span class="d-block small text-muted">2 days ago</span>
-                    </div>
-                  </div>
-                </div>
-                <!-- End Media -->
-
-                <p>Since our attention spans seem to be shrinking by the day — keeping it simple is more important than ever.</p>
-
-                <a class="link" href="#">Reply</a>
-              </li>
-              <!-- End Item -->
-            </ul>
-            <!-- End Comment -->
-          </div>
-          <!-- End Col -->
-        </div>
-        <!-- End Row -->
-      </div>
-      <!-- End Comment -->
-
-      <!-- Post a Comment -->
-      <div class="container">
-        <!-- Heading -->
-        <div class="w-lg-65 text-center mx-lg-auto mb-7">
-          <h3>Post a comment</h3>
-        </div>
-        <!-- End Heading -->
-
-        <div class="row justify-content-lg-center">
-          <div class="col-lg-8">
-            <!-- Card -->
-            <div class="card card-lg card-bordered shadow-none">
-              <div class="card-body">
-                <form>
-                  <div class="d-grid gap-4">
-                    <!-- Form -->
-                    <div class="row">
-                      <div class="col-sm-6 mb-4 mb-sm-0">
-                        <label class="form-label" for="blogContactsFormFirstName">First name</label>
-                        <input type="text" class="form-control" name="blogContactsFirstName" id="blogContactsFormFirstName" placeholder="First name" aria-label="First name">
-                      </div>
-
-                      <div class="col-sm-6">
-                        <label class="form-label" for="blogContactsFormLasttName">Last name</label>
-                        <input type="text" class="form-control" name="blogContactsLastName" id="blogContactsFormLasttName" placeholder="Last name" aria-label="Last name">
-                      </div>
-                    </div>
-                    <!-- End Form -->
-
-                    <!-- Form -->
-                    <span class="d-block">
-                      <label class="form-label" for="blogContactsFormEmail">Your email</label>
-                      <input type="email" class="form-control" name="blogContactsEmailName" id="blogContactsFormEmail" placeholder="email@site.com" aria-label="email@site.com">
-                    </span>
-                    <!-- End Form -->
-
-                    <!-- Form -->
-                    <span class="d-block">
-                      <label class="form-label" for="blogContactsFormComment">Comment</label>
-                      <textarea class="form-control" id="blogContactsFormComment" name="blogContactsCommentName" placeholder="Leave your comment here..." aria-label="Leave your comment here..." rows="5"></textarea>
-                    </span>
-                    <!-- End Form -->
-
-                    <div class="d-grid">
-                      <button type="submit" class="btn btn-primary">Submit</button>
-                    </div>
-                  </div>
-                </form>
-              </div>
-            </div>
-            <!-- End Card -->
-          </div>
-          <!-- End Col -->
-        </div>
-        <!-- End Row -->
-      </div>
-      <!-- End Post a Comment -->
-
-      <!-- Subscribe -->
-      <div class="container content-space-2 content-space-lg-3">
-        <!-- Heading -->
-        <div class="w-lg-65 text-center mx-lg-auto mb-7">
-          <h3>Stay in the know</h3>
-          <p>Get special offers on the latest developments from Unify.</p>
-        </div>
-        <!-- End Heading -->
-
-        <div class="text-center mx-auto" style="max-width: 32rem;">
-          <form>
-            <!-- Input Card -->
-            <div class="input-card border mb-5">
-              <div class="input-card-form">
-                <label for="subscribeForm" class="form-label visually-hidden">Enter email</label>
-                <input type="email" class="form-control form-control-lg" id="subscribeForm" placeholder="Enter email" aria-label="Enter email">
-              </div>
-              <button type="button" class="btn btn-primary btn-lg" id="heroNameAddOn">Subscribe</button>
-            </div>
-            <!-- End Input Card -->
-          </form>
-
-          <a class="link" href="./page-login.html">Create a free account <i class="bi-chevron-right small ms-1"></i></a>
-        </div>
-      </div>
-      <!-- End Subscribe -->
+      <!-- End Quienes Somos -->
     </main>
 
     <footer class="bg-dark">
