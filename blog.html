@@ -4,7 +4,11 @@ pagination:
   enabled: true
 permalink: /blog/
 ---
-{% assign sorted_posts = paginator.posts | sort: 'date' | reverse %}
+{% if paginator.posts %}
+    {% assign sorted_posts = paginator.posts | sort: 'date' | reverse %}
+{% else %}
+    {% assign sorted_posts = site.posts | sort: 'date' | reverse %}
+{% endif %}
 <!-- Hero -->
 <div class="overflow-hidden mt-5">
     <main id="content" role="main">
