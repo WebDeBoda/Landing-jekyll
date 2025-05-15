@@ -149,7 +149,7 @@ recent_articles: 'Artículos Más Recientes'
         </div>
         <!-- End Heading -->
 
-        <div class="row">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 gx-7">
           {% for post in sorted_posts limit: 3 %}
             {% include snippets/post-card.html %}
           {% endfor %}
