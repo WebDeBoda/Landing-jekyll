@@ -105,27 +105,27 @@ recent_articles: 'Artículos Más Recientes'
             <!-- List -->
             <ul class="list-inline mb-0">
           <li class="list-inline-item">
-            <a class="btn btn-ghost-secondary btn-icon btn-sm rounded-circle" href="https://www.facebook.com/sharer/sharer.php?u={{ page.url | absolute_url }}" target="_blank" rel="noopener" title="Compartir en Facebook">
+            <a class="btn btn-ghost-secondary btn-icon btn-sm rounded-circle" href="https://www.facebook.com/sharer/sharer.php?u={{ site_url }}{{ page.url | absolute_url }}" target="_blank" rel="noopener" title="Compartir en Facebook">
               <i class="bi-facebook"></i>
             </a>
           </li>
           <li class="list-inline-item">
-            <a class="btn btn-ghost-secondary btn-icon btn-sm rounded-circle" href="https://twitter.com/intent/tweet?url={{ page.url | absolute_url }}&text={{ page.title | uri_escape }}" target="_blank" rel="noopener" title="Compartir en Twitter">
+            <a class="btn btn-ghost-secondary btn-icon btn-sm rounded-circle" href="https://twitter.com/intent/tweet?url={{ site_url }}{{ page.url | absolute_url }}&text={{ page.title | uri_escape }}" target="_blank" rel="noopener" title="Compartir en Twitter">
               <i class="bi-twitter-x"></i>
             </a>
           </li>
           <li class="list-inline-item">
-            <a class="btn btn-ghost-secondary btn-icon btn-sm rounded-circle" href="https://www.linkedin.com/shareArticle?mini=true&url={{ page.url | absolute_url }}&title={{ page.title | uri_escape }}" target="_blank" rel="noopener" title="Compartir en LinkedIn">
+            <a class="btn btn-ghost-secondary btn-icon btn-sm rounded-circle" href="https://www.linkedin.com/shareArticle?mini=true&url={{ site_url }}{{ page.url | absolute_url }}&title={{ page.title | uri_escape }}" target="_blank" rel="noopener" title="Compartir en LinkedIn">
               <i class="bi-linkedin"></i>
             </a>
           </li>
-          <li class="list-inline-item">
+          <!-- <li class="list-inline-item">
             <a class="btn btn-ghost-secondary btn-icon btn-sm rounded-circle" href="https://www.instagram.com/" target="_blank" rel="noopener" title="Instagram">
               <i class="bi-instagram"></i>
             </a>
-          </li>
+          </li> -->
           <li class="list-inline-item">
-            <a class="btn btn-ghost-secondary btn-icon btn-sm rounded-circle" href="https://api.whatsapp.com/send?text={{ page.title | uri_escape }}%20{{ page.url | absolute_url }}" target="_blank" rel="noopener" title="Compartir en WhatsApp">
+            <a class="btn btn-ghost-secondary btn-icon btn-sm rounded-circle" href="https://api.whatsapp.com/send?text={{ page.title | uri_escape }}%20{{ site_url }}{{ page.url | absolute_url }}" target="_blank" rel="noopener" title="Compartir en WhatsApp">
               <i class="bi-whatsapp"></i>
             </a>
           </li>
