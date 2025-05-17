@@ -34,17 +34,17 @@ recent_articles: 'Artículos Más Recientes'
   <meta property="og:title" content="Diseña la web de tu boda | Personalización rápida y fácil">
   <meta property="og:description" content="Crea la web perfecta para tu boda en minutos. Personaliza cada detalle y gestiona tus invitados fácilmente. ¡Empieza ahora!">
   <meta property="og:url" content="https://www.webdeboda.es">
-  <meta property="og:image" content="https://webdeboda.es/galeria/Logo.png">
+  <meta property="og:image" content="{{ site.url }}/galeria/Logo.png">
 
   <!-- Twitter Card Tags -->
   <meta name="twitter:title" content="Diseña la web de tu boda | Personalización rápida y fácil">
   <meta name="twitter:description" content="Crea la web perfecta para tu boda en minutos. Personaliza cada detalle y gestiona tus invitados fácilmente. ¡Empieza ahora!">
   <meta name="twitter:url" content="https://www.webdeboda.es">
-  <meta name="twitter:image" content="https://webdeboda.es/galeria/Logo.png">
+  <meta name="twitter:image" content="{{ site.url }}/galeria/Logo.png">
 
 
   <!-- Favicon -->
-  <link rel="shortcut icon" href="{{ '/favicon.png' | relative_url }}">
+  <link rel="shortcut icon" href="{{ '/galeria/favicon.png' | relative_url }}">
 
   <!-- Font -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -105,17 +105,17 @@ recent_articles: 'Artículos Más Recientes'
             <!-- List -->
             <ul class="list-inline mb-0">
           <li class="list-inline-item">
-            <a class="btn btn-ghost-secondary btn-icon btn-sm rounded-circle" href="https://www.facebook.com/sharer/sharer.php?u={{ site_url }}{{ page.url | absolute_url }}" target="_blank" rel="noopener" title="Compartir en Facebook">
+            <a class="btn btn-ghost-secondary btn-icon btn-sm rounded-circle" href="https://www.facebook.com/sharer/sharer.php?u={{ site.url }}{{ page.url | relative_url }}" target="_blank" rel="noopener" title="Compartir en Facebook">
               <i class="bi-facebook"></i>
             </a>
           </li>
           <li class="list-inline-item">
-            <a class="btn btn-ghost-secondary btn-icon btn-sm rounded-circle" href="https://twitter.com/intent/tweet?url={{ site_url }}{{ page.url | absolute_url }}&text={{ page.title | uri_escape }}" target="_blank" rel="noopener" title="Compartir en Twitter">
+            <a class="btn btn-ghost-secondary btn-icon btn-sm rounded-circle" href="https://twitter.com/intent/tweet?url={{ site.url }}{{ page.url | relative_url }}&text={{ page.title | uri_escape }}" target="_blank" rel="noopener" title="Compartir en Twitter">
               <i class="bi-twitter-x"></i>
             </a>
           </li>
           <li class="list-inline-item">
-            <a class="btn btn-ghost-secondary btn-icon btn-sm rounded-circle" href="https://www.linkedin.com/shareArticle?mini=true&url={{ site_url }}{{ page.url | absolute_url }}&title={{ page.title | uri_escape }}" target="_blank" rel="noopener" title="Compartir en LinkedIn">
+            <a class="btn btn-ghost-secondary btn-icon btn-sm rounded-circle" href="https://www.linkedin.com/shareArticle?mini=true&url={{ site.url }}{{ page.url | relative_url }}&title={{ page.title | uri_escape }}" target="_blank" rel="noopener" title="Compartir en LinkedIn">
               <i class="bi-linkedin"></i>
             </a>
           </li>
@@ -125,7 +125,7 @@ recent_articles: 'Artículos Más Recientes'
             </a>
           </li> -->
           <li class="list-inline-item">
-            <a class="btn btn-ghost-secondary btn-icon btn-sm rounded-circle" href="https://api.whatsapp.com/send?text={{ page.title | uri_escape }}%20{{ site_url }}{{ page.url | absolute_url }}" target="_blank" rel="noopener" title="Compartir en WhatsApp">
+            <a class="btn btn-ghost-secondary btn-icon btn-sm rounded-circle" href="https://api.whatsapp.com/send?text={{ page.title | uri_escape }}%20{{ site.url }}{{ page.url | relative_url }}" target="_blank" rel="noopener" title="Compartir en WhatsApp">
               <i class="bi-whatsapp"></i>
             </a>
           </li>
